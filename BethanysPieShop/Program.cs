@@ -1,7 +1,14 @@
+using BethanysPieShop.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add MVC services to the container.
 builder.Services.AddControllersWithViews();
+
+// Register application services for dependency injection.
+builder.Services.AddScoped<IPieRepository, MockPieRepository>();
+builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+
 
 var app = builder.Build();
 
